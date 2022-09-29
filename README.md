@@ -509,6 +509,6 @@ There was an update from the users that they want to add following features:
 
 * create and edit graph within the application,
 * export the graph into a csv file,
-* add special events that may occur in the simulation (e.g. breaks for the lunch).
+* add special events that may occur in the simulation (e.g. lunch break).
 
 Such application already exists. You can try it yourself at <https://shiny.vsb.cz/app/nts-shiny>. The source codes are available here [NTS backend](https://github.com/It4innovations/NTS/) and [NTS Shiny](https://github.com/It4innovations/NTS_shiny/). It extends the functionality of the app above. The **bs4dash** features was used to easily style the app.
