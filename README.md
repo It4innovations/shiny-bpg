@@ -248,7 +248,9 @@ repo_url = NULL
 
 It also contains other usefull functions like function to prepare git repository, prepare testing infrastructure, and so on. After you have defined the description as above you can simply run **01_start.R** and everything will be set automatically. You can check the **DESCRIPTION** file if you want to be sure. As all is set up, run `golem::run_dev()`. The very first app window will appear (Fig.1) and you can move into **R** folder where all needed functions for the app will be defined.
 
-![First screen.](shiny_01.png?fileId=491342#mimetype=image%2Fpng&hasPreview=true)You can create your own header using the basic **h1** tag along with css on the UI side (**app_ui.R**), e.g.,
+![Fig.1.](/readme_img/shiny_01.png)
+
+You can create your own header using the basic **h1** tag along with css on the UI side (**app_ui.R**), e.g.,
 
 ```
 app_ui <- function(request) {
@@ -266,6 +268,8 @@ app_ui <- function(request) {
 ```
 
 Given code is inserted in **app_ui.R** file and yields in a more styled header as it is seen in Fig.2.
+
+![Fig.2.](/readme_img/shiny_02.png)
 
 ```
 To divide the application into "loading page" and "simulation page", you can use Shiny's tabsets layout.
@@ -290,7 +294,9 @@ app_ui <- function(request) {
 
 The resulting layout is shown in Fig.3.
 
-![shiny_03.png](shiny_03.png?fileId=491440#mimetype=image%2Fpng&hasPreview=true)Now, you need to put some logic in code to upload a csv file and subsequently plot it. On the UI side, insert following lines of code in the **tabsetPanel()**
+![Fig.3.](/readme_img/shiny_03.png)
+
+Now, you need to put some logic in code to upload a csv file and subsequently plot it. On the UI side, insert following lines of code in the **tabsetPanel()**
 
 ```
 tabPanel("Input",
@@ -329,7 +335,9 @@ The data of the graph is prepared in a reactive way using **reactiveValues()**. 
 
 An example CSV file can be downloaded [HERE](HERE). In short, the CSV file consists of 5 columns: **from**, **to**, **weight**, **level**, and **set**. Columns **from** and **to** contain the name of nodes connected by a single edge. The **weight** represents the weight of each edge. The **level** holds the levels of each edge, i.e. that the given edge belongs to the set of "the first floor" ("the first row"), "the second floor" ("the second row"), and so on. The **set** represents the common sets of the edges within "one floor" ("one row"). Different sets of one row will be drawed by different color. So, after the **example_network.csv** is uploaded into the app, the graph of the network is plotted, see Fig.4.
 
-![shiny_04.png](shiny_04.png?fileId=491607#mimetype=image%2Fpng&hasPreview=true)At this moment, you have prepared the input data for the simulation. Thus, the logic for the simulation along with the simulation function has to be created. As it was said above, the input for the simulator is the graph itself and the number of people that will go through the graph. To do so, you can use the following code on the UI side into **tabsetPanel()**.
+![Fig.4.](/readme_img/shiny_04.png)
+
+At this moment, you have prepared the input data for the simulation. Thus, the logic for the simulation along with the simulation function has to be created. As it was said above, the input for the simulator is the graph itself and the number of people that will go through the graph. To do so, you can use the following code on the UI side into **tabsetPanel()**.
 
 ```
 tabPanel("Simulation",
@@ -482,7 +490,7 @@ In other words, if the **r_simulation$simulation** is ready, prepare the animati
 
 Congratulations, everything is ready to run the app. Type `golem::run_dev()` into the R console and try it yourself. The app should look like as in Fig.5, below.
 
-![Example of single run](/readme_img/shiny_run_final.gif)
+![Fig.5.](/readme_img/shiny_run_final.gif)
 
 ### Adjustments based on customers review
 
