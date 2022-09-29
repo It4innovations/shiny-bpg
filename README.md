@@ -109,13 +109,13 @@ As you can see, the golem package really helps you to implement and successfully
 
 #### GitHub/GitLab
 
-Successful development of larger applications cannot be possible without any "smart" code archives. If you are creating a complex package, you can easily make a mistake and you will disrupt the rest of the code. In that case, you will want to use last functional version of the application, so you have to archive it from time to time. The better way is to use a version system like Github, Gitlab, Bitbucket, and so on. You can upload whole new project, or just changes, fetch new data, etc. by simple **git** commands from terminal (command line). It will check every change from the last files to a new one, so if you make a mistake, you just use previous version of a file. Moreover, if you do not like terminal's (command line's) commands, you can use some of the existing graphical git softwares to manage your git repository or you can use built-in git system in the RStudio. If the git repository is initialised within the project folder, you can do all git commands from RStudio itself. The last option is to use web application of the used version systems to manage stored files. TMost version systems provide this functionality. It is only up to you, which way is the most suitable for you.
+Successful development of larger applications cannot be possible without any "smart" code archives. If you are creating a complex package, you can easily make a mistake and you will disrupt the rest of the code. In that case, you will want to use last functional version of the application, so you have to archive it from time to time. The better way is to use a version system like Github, Gitlab, Bitbucket, and so on. You can upload whole new project, or just changes, fetch new data, etc. by simple **git** commands from terminal (command line). It will check every change from the last files to a new one, so if you make a mistake, you just use previous version of a file. Moreover, if you do not like terminal's (command line's) commands, you can use some of the existing graphical git softwares to manage your git repository or you can use built-in git system in the RStudio. If the git repository is initialised within the project folder, you can do all git commands from RStudio itself. The last option is to use web application of the used version systems to manage stored files. Most version systems provide this functionality. It is only up to you, which way is the most suitable for you.
 
 ### Tests
 
-Before the package is ready to deploy, the tests have to be done. It automatically check if the application could be built without any problems, functions act as expected and so on. In general, the tests can be divided in three sections:
+Before the package is ready to deploy, the tests have to be done. It automatically checks if the application can be built without any problems, functions behave as expected, and so on. In general, the tests can be divided in three sections:
 
-* Unit tests - functions acts as expected,
+* Unit tests - functions behave as expected,
 * Server function tests - testing of reactive components and outputs,
 * Snapshot-based tests - simulate user actions, like clicking on the buttons, take snapshots of the application state, and compare the app state with the saved snapshots.
 
@@ -135,11 +135,11 @@ In other words, you can release the application after all implementation is done
 
 ## Building blocks
 
-Some of the possible functionalities of the Shiny will be discussed in this section. You will learn about some approaches how to create a login screen, which plot libraries exist, how to use interactive data tables, how to transfer a data, connect your application to a database, and learn about the difference between R6 and S3 model.
+Some of the possible functionalities of the Shiny will be discussed in this section. Here you will learn how to create a login screen, which plot libraries exist, how to use interactive data tables, how to transfer data, connect your application to a database, and learn about the difference between R6 and S3 model.
 
 ### Login screen
 
-You don't have to be worry about whether the Shiny is able to provide a login screen, because it can! To learn how to create a login page, you can visit <https://towardsdatascience.com/r-shiny-authentication-incl-demo-app-a599b86c54f7>.
+You do not need to worry about whether the Shiny is able to provide a login screen, because it can! To learn how to create a login page, you can visit <https://towardsdatascience.com/r-shiny-authentication-incl-demo-app-a599b86c54f7>.
 
 The author of the given hands-on tutorial considers 3 approaches to build the login page:
 
@@ -151,7 +151,7 @@ You can find other tutorials on the internet, e.g. you can inspire yourself at <
 
 ### Visualisations - plot libraries
 
-The best way to get an idea how to interpret a data is to visualise them. The Shiny provides several methods to do so. You can use static plots, interactive plots, or you can even display the data on interactive maps using Leaflet package. Brief summaries for each of them are stated below.
+The first step to understand the data is to visualise them. The Shiny provides several methods to do so. You can use static plots, interactive plots, or you can even display the data on interactive maps using Leaflet package. Brief summaries for each of them are stated below.
 
 ##### Static
 
@@ -159,14 +159,14 @@ Usage of the static plots in the Shiny is quite the same as in R itself. Data ca
 
 ##### Interactive
 
-Using the interactive plots within the Shiny app could be a powerful feature. `plotOutput()` defines four different mouse events:
+Interactive plots within the Shiny app are powerful feature. `plotOutput()` defines four different mouse events:
 
 * **click** for a single mouse click,
 * **dblclick** for a double click,
 * **hover** to do something when mouse stays in the same place within the plot for a while,
 * **brush** to use a rectangular selection tool.
 
-Examples of the usage of given events could be found at <https://mastering-shiny.org/action-graphics.html>.
+The examples of the given events can be found <https://mastering-shiny.org/action-graphics.html>.
 
 For some advanced interactive plots, visit <https://shiny.rstudio.com/articles/plot-interaction-advanced.html>.
 
@@ -194,7 +194,7 @@ Rendering data in the static table is done using `tableOutput()` and `renderTabl
 
 Interactive tables are the best way to represent data frames in the Shiny app. You can use built-in commands such as `dataTableOutput()` and `renderDataTable()` or use another package such as **reactable**, see <https://glin.github.io/reactable/index.html>.
 
-With the use of interactive tables, you can use search, to sort columns, define number of visible rows per page, navigate through the table's pages, and so on.
+Interactive tables have wide range of utilities like search function, sort columns, define number of visible rows per page, navigate through the table's pages, and so on.
 
 ### Data transfer logic
 
@@ -220,16 +220,17 @@ As the Shiny was becoming more popular, there was a growing need to connect the 
 
 You can use **dplyr** package to manage remote data as the local in-memory data. If you need to do more advanced operations, the **DBI** package will be more suitable for you. How to use **dplyr** and **DBI** package with a remote database is described at <https://shiny.rstudio.com/articles/overview.html>.
 
-Beware of secure vulnerability attempting the external database. To learn something about the SQL injection prevention, visit <https://shiny.rstudio.com/articles/sql-injections.html>.
+Beware of secure vulnerability when attempting the external database. To learn something about the SQL injection prevention, visit <https://shiny.rstudio.com/articles/sql-injections.html>.
 
 ## Alpha version
 
 Imagine a situation where you have to create an application in which you will load data of a network graph from the CSV file and run a simulation of the throughput of the graph. The vertices of the graph will represent individual stations in the process and the weights will be a time needed to move from one station to another. The input of the simulator will also be a number of people that will go through the graph. The example will start with preparing the new project in RStudio and will continue through the creation of necessary functions to the successful run of the whole application. Only the basic Shiny functions will be used.
 
-First, run the RStudio and install the Golem package as well as the Shiny package (if you have not already done it):
+First, run the RStudio and install the Golem package as well as the Shiny package (if you have not already done it), and load them:
 
 ```
 install.packages("golem, shiny, shinyjs")
+library("golem, shiny, shinyjs")
 ```
 
 Make sure that you have also installed **dplyr**, **plotly**, and **utils** packages.
@@ -269,7 +270,7 @@ app_ui <- function(request) {
 }
 ```
 
-Given code is inserted in **app_ui.R** file and yields in a more styled header as it is seen in Fig.2.
+Given code is inserted in **app_ui.R** file and results in a differently styled header as seen in Fig.2.
 
 | ![Fig.2.](/readme_img/shiny_02.png)      |
 | ---------------------------------------- |
@@ -504,4 +505,10 @@ Congratulations, everything is ready to run the app. Type `golem::run_dev()` int
 
 ### Adjustments based on customers review
 
-There was an update from the users that they want to add an option to create and edit graph within the application. Also, export the graph into a csv file is needed such as adding special events that may occur in the simulation. Such application already exists. You can try it yourself at <https://shiny.vsb.cz/app/nts-shiny>. The source codes are available here [NTS backend](https://github.com/It4innovations/NTS/) and [NTS Shiny](https://github.com/It4innovations/NTS_shiny/). It extends the functionality of the app above. The **bs4dash** features was used to easily style the app.
+There was an update from the users that they want to add following features:
+
+* create and edit graph within the application,
+* export the graph into a csv file,
+* add special events that may occur in the simulation (e.g. breaks for the lunch).
+
+Such application already exists. You can try it yourself at <https://shiny.vsb.cz/app/nts-shiny>. The source codes are available here [NTS backend](https://github.com/It4innovations/NTS/) and [NTS Shiny](https://github.com/It4innovations/NTS_shiny/). It extends the functionality of the app above. The **bs4dash** features was used to easily style the app.
