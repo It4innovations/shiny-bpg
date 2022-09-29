@@ -248,11 +248,11 @@ repo_url = NULL
 
 It also contains other usefull functions like function to prepare git repository, prepare testing infrastructure, and so on. After you have defined the description as above you can simply run **01_start.R** and everything will be set automatically. You can check the **DESCRIPTION** file if you want to be sure. As all is set up, run `golem::run_dev()`. The very first app window will appear (Fig.1) and you can move into **R** folder where all needed functions for the app will be defined.
 
-| ![Fig.1.](/readme_img/shiny_01.png) |
+<p align = "center"><img src = "/readme_img/shiny_01.png"></p>
 
-|:--:|
-
-| <b>Fig.1: First run of the application.</b>|
+<p align = "center">
+<b>Fig.1: The first run of the application.</b>
+</p>
 
 You can create your own header using the basic **h1** tag along with css on the UI side (**app_ui.R**), e.g.,
 
