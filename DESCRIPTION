@@ -1,0 +1,13 @@
+Package: graphapp
+Title: Graph simulator
+Version: 0.0.0.9000
+Authors@R: person('John', 'Doe', email = 'john.doe@email.com', role = c('cre', 'aut'))
+Description: Graph simulator loads a network graph from a CSV file and runs the simulation of its troughput.
+License: What license is it under?
+Imports: 
+    config (>= 0.3.1),
+    golem (>= 0.3.3),
+    shiny (>= 1.7.1)
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.2.1
