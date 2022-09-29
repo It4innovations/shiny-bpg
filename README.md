@@ -482,7 +482,7 @@ In other words, if the **r_simulation$simulation** is ready, prepare the animati
 
 Congratulations, everything is ready to run the app. Type `golem::run_dev()` into the R console and try it yourself. The app should look like as in Fig.5, below.
 
-![shiny_run_final.gif](https://code.it4i.cz/ADAS-Private/shiny-bpg/-/blob/main/readme_img/shiny_run_final.gif)
+![Example of single run](https://code.it4i.cz/ADAS-Private/shiny-bpg/-/blob/main/readme_img/shiny_run_final.gif)
 
 ### Adjustments based on customers review
 
