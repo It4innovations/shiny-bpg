@@ -127,25 +127,25 @@ If you create a new golem project, in this case it is called golex (golem exampl
 
 ```
 golex
-├── DESCRIPTION
-├── NAMESPACE
-├── R
-│   ├── app_config.R
-│   ├── app_server.R
-│   ├── app_ui.R
-│   └── run_app.R
-├── dev
-│   ├── 01_start.R
-│   ├── 02_dev.R
-│   ├── 03_deploy.R
-│   └── run_dev.R
-├── inst
-│   ├── app
-│   │   └── www
-│   │       └── favicon.ico
-│   └── golem-config.yml
-└── man
-    └── run_app.Rd
+(U+251C)(U+2500)(U+2500) DESCRIPTION
+(U+251C)(U+2500)(U+2500) NAMESPACE
+(U+251C)(U+2500)(U+2500) R
+(U+2502)   (U+251C)(U+2500)(U+2500) app_config.R
+(U+2502)   (U+251C)(U+2500)(U+2500) app_server.R
+(U+2502)   (U+251C)(U+2500)(U+2500) app_ui.R
+(U+2502)   (U+2514)(U+2500)(U+2500) run_app.R
+(U+251C)(U+2500)(U+2500) dev
+(U+2502)   (U+251C)(U+2500)(U+2500) 01_start.R
+(U+2502)   (U+251C)(U+2500)(U+2500) 02_dev.R
+(U+2502)   (U+251C)(U+2500)(U+2500) 03_deploy.R
+(U+2502)   (U+2514)(U+2500)(U+2500) run_dev.R
+(U+251C)(U+2500)(U+2500) inst
+(U+2502)   (U+251C)(U+2500)(U+2500) app
+(U+2502)   (U+2502)   (U+2514)(U+2500)(U+2500) www
+(U+2502)   (U+2502)       (U+2514)(U+2500)(U+2500) favicon.ico
+(U+2502)   (U+2514)(U+2500)(U+2500) golem-config.yml
+(U+2514)(U+2500)(U+2500) man
+    (U+2514)(U+2500)(U+2500) run_app.Rd
 ```
 
 At the **DESCRIPTION** file, you will add series of metadata about the application. The name of the author(s), version of the app, what is its purpose, etc. It will be filled automatically by running the scripts from **\\dev** folder. The **NAMESPACE** defines how to interact with the rest of the package (application) and it will never be touched by you. This file will be also created in an automated way when running the documenting process of your R package. All R functions (all app functions) will be held in **/R** folder. Each R file used during development should be stored in **/dev** folder. In the **/inst/app/ww,** you will keep every CSS or JS files which define the final look of your application. The golem configuration can be set in **golem-config.yml** or you can use **golem_opts** in the **run_app()** function. The purpose of the last **/man** folder is to held package documentation.
@@ -294,7 +294,7 @@ repo_url = NULL
 
 It also contains other usefull functions like function to prepare git repository, prepare testing infrastructure, and so on. After you have defined the description as above you can simply run **01_start.R** and everything will be set automatically. You can check the **DESCRIPTION** file if you want to be sure. As all is set up, run `golem::run_dev()`. The very first app window will appear (Fig.1) and you can move into **R** folder where all needed functions for the app will be defined.
 
-| ![Fig.1.](/readme_img/shiny_01.png)      |
+| ![Fig.1.](readme_img/shiny_01.png)      |
 | ---------------------------------------- |
 | Fig.1: The first run of the application. |
 
@@ -317,7 +317,7 @@ app_ui <- function(request) {
 
 Given code is inserted in **app_ui.R** file and results in a differently styled header as seen in Fig.2.
 
-| ![Fig.2.](/readme_img/shiny_02.png)      |
+| ![Fig.2.](readme_img/shiny_02.png)      |
 | ---------------------------------------- |
 | Fig.2: Updated header. |
 
@@ -344,7 +344,7 @@ app_ui <- function(request) {
 
 The resulting layout is shown in Fig.3.
 
-| ![Fig.3.](/readme_img/shiny_03.png)      |
+| ![Fig.3.](readme_img/shiny_03.png)      |
 | ---------------------------------------- |
 | Fig.3: Layout of the application. |
 
@@ -387,7 +387,7 @@ The data of the graph is prepared in a reactive way using **reactiveValues()**. 
 
 An example CSV file can be downloaded [here](https://code.it4i.cz/ADAS-Private/shiny-bpg/-/blob/main/inst/app/example_network.csv). In short, the CSV file consists of 5 columns: **from**, **to**, **weight**, **level**, and **set**. Columns **from** and **to** contain the name of nodes connected by a single edge. The **weight** represents the weight of each edge. The **level** holds the levels of each edge, i.e. that the given edge belongs to the set of "the first floor" ("the first row"), "the second floor" ("the second row"), and so on. The **set** represents the common sets of the edges within "one floor" ("one row"). Different sets of one row will be drawed by different color. So, after the **example_network.csv** is uploaded into the app, the graph of the network is plotted, see Fig.4.
 
-| ![Fig.4.](/readme_img/shiny_04.png)      |
+| ![Fig.4.](readme_img/shiny_04.png)      |
 | ---------------------------------------- |
 | Fig.4: Loaded graph. |
 
@@ -544,9 +544,6 @@ In other words, if the **r_simulation$simulation** is ready, prepare the animati
 
 Congratulations, everything is ready to run the app. Type `golem::run_dev()` into the R console and try it yourself. The app should look like as in Fig.5, below.
 
-| ![Fig.5.](/readme_img/shiny_run_final.gif) |
-| ------------------------------------------ |
-| Fig.5: Example run of the application.     |
 
 ## Adjustments based on customers review
 
