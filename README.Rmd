@@ -2,6 +2,7 @@
 header-includes:
   - \usepackage{fancyhdr}
   - \usepackage{lipsum}
+  - \usepackage{pmboxdraw}
   - \pagestyle{fancy}
   - \fancyfoot[CO,C]{© Copyright 2022 Beneficiaries of the EuroCC/Castiel Project}
   - \fancyfoot[RO]{\thepage}
@@ -125,29 +126,28 @@ Everything about the golem package can be found at [https://engineering-shiny.or
 
 If you create a new golem project, in this case it is called golex (golem example), a structured folder architecture will be created.
 
+```{r, echo = FALSE}
+knitr::asis_output("golex\n
+\U251C\U2500\U2500 DESCRIPTION\n
+\U251C\U2500\U2500 NAMESPACE\n
+\U251C\U2500\U2500 R\n
+\U2502   \U251C\U2500\U2500 app_config.R\n
+\U2502   \U251C\U2500\U2500 app_server.R\n
+\U2502   \U251C\U2500\U2500 app_ui.R\n
+\U2502   \U2514\U2500\U2500 run_app.R\n
+\U251C\U2500\U2500 dev\n
+\U2502   \U251C\U2500\U2500 01_start.R\n
+\U2502   \U251C\U2500\U2500 02_dev.R\n
+\U2502   \U251C\U2500\U2500 03_deploy.R\n
+\U2502   \U2514\U2500\U2500 run_dev.R\n
+\U251C\U2500\U2500 inst\n
+\U2502   \U251C\U2500\U2500 app\n
+\U2502   \U2502   \U2514\U2500\U2500 www\n
+\U2502   \U2502       \U2514\U2500\U2500 favicon.ico\n
+\U2502   \U2514\U2500\U2500 golem-config.yml\n
+\U2514\U2500\U2500 man\n
+    \U2514\U2500\U2500 run_app.Rd")
 ```
-golex
-(U+251C)(U+2500)(U+2500) DESCRIPTION
-(U+251C)(U+2500)(U+2500) NAMESPACE
-(U+251C)(U+2500)(U+2500) R
-(U+2502)   (U+251C)(U+2500)(U+2500) app_config.R
-(U+2502)   (U+251C)(U+2500)(U+2500) app_server.R
-(U+2502)   (U+251C)(U+2500)(U+2500) app_ui.R
-(U+2502)   (U+2514)(U+2500)(U+2500) run_app.R
-(U+251C)(U+2500)(U+2500) dev
-(U+2502)   (U+251C)(U+2500)(U+2500) 01_start.R
-(U+2502)   (U+251C)(U+2500)(U+2500) 02_dev.R
-(U+2502)   (U+251C)(U+2500)(U+2500) 03_deploy.R
-(U+2502)   (U+2514)(U+2500)(U+2500) run_dev.R
-(U+251C)(U+2500)(U+2500) inst
-(U+2502)   (U+251C)(U+2500)(U+2500) app
-(U+2502)   (U+2502)   (U+2514)(U+2500)(U+2500) www
-(U+2502)   (U+2502)       (U+2514)(U+2500)(U+2500) favicon.ico
-(U+2502)   (U+2514)(U+2500)(U+2500) golem-config.yml
-(U+2514)(U+2500)(U+2500) man
-    (U+2514)(U+2500)(U+2500) run_app.Rd
-```
-
 At the **DESCRIPTION** file, you will add series of metadata about the application. The name of the author(s), version of the app, what is its purpose, etc. It will be filled automatically by running the scripts from **\\dev** folder. The **NAMESPACE** defines how to interact with the rest of the package (application) and it will never be touched by you. This file will be also created in an automated way when running the documenting process of your R package. All R functions (all app functions) will be held in **/R** folder. Each R file used during development should be stored in **/dev** folder. In the **/inst/app/ww,** you will keep every CSS or JS files which define the final look of your application. The golem configuration can be set in **golem-config.yml** or you can use **golem_opts** in the **run_app()** function. The purpose of the last **/man** folder is to held package documentation.
 
 As you can see, the golem package really helps you to implement and successfully deploy the app. It helps you to maintain the package structure and even build the app. For more ideas to create production-grade Shiny app, and other information about the golem package, please visit the link above. You can use another source of information, of course. There are plenty of them in the internet.
