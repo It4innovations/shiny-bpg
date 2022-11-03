@@ -1,4 +1,11 @@
-# Developing Shiny application
+| ![media/image1.jpeg](media/image1.jpeg)                 |
+|---------------------------------------------------------|
+| <h1>Developing Shiny application<h1/><h2>Best Practise Guide -- October 2022</h2> |
+|![media/image2.png](media/image2.png)![media/image3.png](media/image3.png)|
+| ![media/image4.png](media/image4.png)                   |
+
+
+
 
 ## Introduction
 
@@ -512,3 +519,9 @@ There was an update from the users that they want to add following features:
 * add special events that may occur in the simulation (e.g. lunch break).
 
 Such application already exists. You can try it yourself at <https://shiny.vsb.cz/app/nts-shiny>. The source codes are available here [NTS backend](https://github.com/It4innovations/NTS/) and [NTS Shiny](https://github.com/It4innovations/NTS_shiny/). It extends the functionality of the app above. The **bs4dash** features was used to easily style the app.
+
+| ![media/image1.jpeg](media/image1.jpeg)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ![media/image2.png](media/image2.png)![media/image3.png](media/image3.png)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| ![media/image4.png](media/image4.png)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| This project has received funding from the European High-Performance Computing Joint Undertaking (JU) under grant agreement No 951732. The JU receives support from the European Union’s Horizon 2020 research and innovation programme and Germany, Bulgaria, Austria, Croatia, Cyprus, the Czech Republic, Denmark, Estonia, Finland, Greece, Hungary, Ireland, Italy, Lithuania, Latvia, Poland, Portugal, Romania, Slovenia, Spain, Sweden, the United Kingdom, France, the Netherlands, Belgium, Luxembourg, Slovakia, Norway, Switzerland, Turkey, the Republic of North Macedonia, Iceland, and Montenegro. This project has received funding from the Ministry of Education, Youth and Sports of the Czech Republic (ID:MC2101). |
