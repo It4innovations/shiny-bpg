@@ -1,6 +1,9 @@
 | ![media/image1.jpeg](media/image1.jpeg)                 |
 |---------------------------------------------------------|
-| <h1>Developing Shiny application<h1/><h2>Best Practise Guide -- October 2022</h2> |
+| <h1> Developing Shiny application <h1/>                 |
+| <h3> Ing. Ladislav Foltyn <h3/>                         |
+| <h2> Best Practise Guide </h2>                          |
+| <h3> October 2022 </h3>                                 |
 |![media/image2.png](media/image2.png)![media/image3.png](media/image3.png)|
 | ![media/image4.png](media/image4.png)                   |
 
@@ -122,11 +125,11 @@ Successful development of larger applications cannot be possible without any "sm
 
 Before the package is ready to deploy, the tests have to be done. It automatically checks if the application can be built without any problems, functions behave as expected, and so on. In general, the tests can be divided in three sections:
 
-* Unit tests - functions behave as expected,
-* Server function tests - testing of reactive components and outputs,
-* Snapshot-based tests - simulate user actions, like clicking on the buttons, take snapshots of the application state, and compare the app state with the saved snapshots.
+* **Unit tests** -- functions behave as expected,
+* **Server function tests** -- testing of reactive components and outputs,
+* **Snapshot-based tests** -- simulate user actions, like clicking on the buttons, take snapshots of the application state, and compare the app state with the saved snapshots.
 
-You can for example use **runTests()** function in Shiny 1.5.0 and more to test your app. Simple example of application with defined tests can be created by **shinyAppTemplate("app_name")** with used option **1: All**. It will generate folder structure with **/tests**. For more information, see <https://shiny.rstudio.com/articles/testing-overview.html>. Code tests can be also done with a testthat package, see <https://testthat.r-lib.org/>.
+You can for example use `runTests()` function in Shiny 1.5.0 and more to test your app. Simple example of application with defined tests can be created by `shinyAppTemplate("app_name")` with used option **1: All**. It will generate folder structure with **/tests**. For more information, see <https://shiny.rstudio.com/articles/testing-overview.html>. Code tests can be also done with a testthat package, see <https://testthat.r-lib.org/>.
 
 #### Continuous integration
 
@@ -207,17 +210,17 @@ Interactive tables have wide range of utilities like search function, sort colum
 
 To work with a data within the Shiny app, you have to (in general) **upload** the data into it. In the UI, use `fileInput()` with defined id and label. On the server side, things are a bit more complicated. Most inputs in the Shiny return simple vectors, but `fileInput()` returns a data frame with four columns:
 
-* **name** as original file name on the user's computer,
-* **size** as the size of the file,
-* **type** in which the MIME type of the file is specified,
-* **datapath** as a path to where the data has been uploaded on the server.
+* **name** -- original file name on the user's computer,
+* **size** -- the size of the file,
+* **type** -- in which the MIME type of the file is specified,
+* **datapath** -- a path to where the data has been uploaded on the server.
 
 The simplest way to eliminate undesirable file formats is to define the allowed (acceptable) formats in `fileInput()`. Allowed formats are defined by the parametr `accept`, e. g. `fileInput("upload", "Upload a file", accept = c(".csv", ".tsv"))`. To avoid any further errors, it is necessary to use `req(input$upload)` on the server side, because after the page is loaded, the `input$upload` is `NULL`.
 
 To create a download action on the UI side, use `downloadButton()` or `downloadLink()`. A command downloadHandler(filename, content) is used on the server side. It has two parameters
 
-* **filename** - a function, which returns a file name,
-* **content** - a function with one argument (`file`), which is the path to save the file.
+* **filename** -- a function, which returns a file name,
+* **content** -- a function with one argument (`file`), which is the path to save the file.
 
 For more information about uploading and downloading data, visit <https://mastering-shiny.org/action-transfer.html>.
 
@@ -283,9 +286,9 @@ Given code is inserted in **app_ui.R** file and results in a differently styled 
 | ---------------------------------------- |
 | Fig.2: Updated header. |
 
-```
+
 To divide the application into "loading page" and "simulation page", you can use Shiny's tabsets layout.
-```
+
 
 ```
 app_ui <- function(request) {
@@ -310,7 +313,7 @@ The resulting layout is shown in Fig.3.
 | ---------------------------------------- |
 | Fig.3: Layout of the application. |
 
-Now, you need to put some logic in code to upload a csv file and subsequently plot it. On the UI side, insert following lines of code in the **tabsetPanel()**
+Now, you need to put some logic in code to upload a csv file and subsequently plot it. On the UI side, insert following lines of code in the `tabsetPanel()`
 
 ```
 tabPanel("Input",
@@ -320,7 +323,7 @@ tabPanel("Input",
 )
 ```
 
-The **fileInput()** creates a button to open a file explorer. Once the file is selected, it is sent to the server side under the id **input$upload**. The **plotlyOutput()** prepares the ground for the upcoming output from the server side under the id **output$network**. On the server side, i.e. **app_server.R**, the following needs to be done.
+The `fileInput()` creates a button to open a file explorer. Once the file is selected, it is sent to the server side under the id `input$upload`. The `plotlyOutput()` prepares the ground for the upcoming output from the server side under the id `output$network`. On the server side, i.e. **app_server.R**, the following needs to be done.
 
 ```
 app_server <- function(input, output, session) {
@@ -345,7 +348,7 @@ app_server <- function(input, output, session) {
 }
 ```
 
-The data of the graph is prepared in a reactive way using **reactiveValues()**. You can add as many variables as you need. In this example, one variable **r$df_network** will be sufficient. Further, the **input$upload** is **NULL** when the app is launched. There is no data available, yet. When its state is changed, it will trigger the **observeEvent()**. An alternative is to use the **req()** which ensures the following lines of code are triggered after some data arrives (look into **renderPlotly()**). It blocks the **NULL** state to proceed. Thus, when the data (**r$df_network**) is ready, they are sent to the **plot_network()** function. The output of the **plot_network()** represents data in a format suitable for the **plotlyOutput()** and they are stored in **output$network**. At the end of the process, the **output$network** is used by **plotlyOutput()** on the UI side. As the **plot_network()** is quite complex, the full code can be downloaded here [plot_network() code](https://github.com/It4innovations/NTS/blob/main/R/plot_network.R). Feel free to browse through the given code.
+The data of the graph is prepared in a reactive way using `reactiveValues()`. You can add as many variables as you need. In this example, one variable `r$df_network` will be sufficient. Further, the `input$upload` is `NULL` when the app is launched. There is no data available, yet. When its state is changed, it will trigger the `observeEvent()`. An alternative is to use the `req()` which ensures the following lines of code are triggered after some data arrives (look into `renderPlotly()`). It blocks the `NULL` state to proceed. Thus, when the data (`r$df_network`) is ready, they are sent to the `plot_network()` function. The output of the `plot_network()` represents data in a format suitable for the `plotlyOutput()` and they are stored in `output$network`. At the end of the process, the `output$network` is used by `plotlyOutput()` on the UI side. As the `plot_network()` is quite complex, the full code can be downloaded here [`plot_network()` code](https://github.com/It4innovations/NTS/blob/main/R/plot_network.R). Feel free to browse through the given code.
 
 An example CSV file can be downloaded [here](https://code.it4i.cz/ADAS-Private/shiny-bpg/-/blob/main/inst/app/example_network.csv). In short, the CSV file consists of 5 columns: **from**, **to**, **weight**, **level**, and **set**. Columns **from** and **to** contain the name of nodes connected by a single edge. The **weight** represents the weight of each edge. The **level** holds the levels of each edge, i.e. that the given edge belongs to the set of "the first floor" ("the first row"), "the second floor" ("the second row"), and so on. The **set** represents the common sets of the edges within "one floor" ("one row"). Different sets of one row will be drawed by different color. So, after the **example_network.csv** is uploaded into the app, the graph of the network is plotted, see Fig.4.
 
@@ -353,7 +356,7 @@ An example CSV file can be downloaded [here](https://code.it4i.cz/ADAS-Private/s
 | ---------------------------------------- |
 | Fig.4: Loaded graph. |
 
-At this moment, you have prepared the input data for the simulation. Thus, the logic for the simulation along with the simulation function has to be created. As it was said above, the input for the simulator is the graph itself and the number of people that will go through the graph. To do so, you can use the following code on the UI side into **tabsetPanel()**.
+At this moment, you have prepared the input data for the simulation. Thus, the logic for the simulation along with the simulation function has to be created. As it was said above, the input for the simulator is the graph itself and the number of people that will go through the graph. To do so, you can use the following code on the UI side into `tabsetPanel()`.
 
 ```
 tabPanel("Simulation",
@@ -375,9 +378,9 @@ tabPanel("Simulation",
 )
 ```
 
-By the **numericInput()**, the number of people will be set. The minimum number of people is set to 10 and the maximum to 5000. If the number of people will be out of range, the error will be triggered on server side and outputed into **textOutput("error_people")**. The **actionButton()** will start the simulation. The simulation will be plotted by **plotlyOutput()**. Moreover, the **textOutput("error_graph")** will output an error message that the button was clicked but there is no graph loaded.
+By the `numericInput()`, the number of people will be set. The minimum number of people is set to 10 and the maximum to 5000. If the number of people will be out of range, the error will be triggered on server side and outputed into `textOutput("error_people")`. The `actionButton()` will start the simulation. The simulation will be plotted by `plotlyOutput()`. Moreover, the `textOutput("error_graph")` will output an error message that the button was clicked but there is no graph loaded.
 
-The texts in **textOuput()** has black font as default. To change it, you have to add **tags$style** into **tags$head** on the UI side. Add `shinyjs::useShinyjs()`as well, it will be used later.
+The texts in `textOuput()` has black font as default. To change it, you have to add `tags$style` into `tags$head` on the UI side. Add `shinyjs::useShinyjs()`as well, it will be used later.
 
 ```
 tags$head(
@@ -403,7 +406,7 @@ app_server <- function(input, output, session) {
 }
 ```
 
-Then, observe if the **actionButton()** was clicked.
+Then, observe if the `actionButton()` was clicked.
 
 ```
 app_server <- function(input, output, session) {
@@ -422,9 +425,9 @@ app_server <- function(input, output, session) {
 }
 ```
 
-As you can see, all the variables are reset after button was clicked. The `shinyjs::disable("run")` disables the action button so you will not be able to click on it until after the computation of the simulation is done. The `r_simulation$continue <- TRUE` tells the server that the algorithm for the simulation can start. The simulation reads as follows: If the **r_simulate$continue** is **TRUE**, check if the **input$input_people** is within the range. If not, output the error. If yes, check if the network is loaded and there is an exit (sink) vertex in it. If something is missing, output the error. If it is successful, compute the simulation and store it into **r_simulation$simulate**.
+As you can see, all the variables are reset after button was clicked. The `shinyjs::disable("run")` disables the action button so you will not be able to click on it until after the computation of the simulation is done. The `r_simulation$continue <- TRUE` tells the server that the algorithm for the simulation can start. The simulation reads as follows: If the `r_simulate$continue` is `TRUE`, check if the `input$input_people` is within the range. If not, output the error. If yes, check if the network is loaded and there is an exit (sink) vertex in it. If something is missing, output the error. If it is successful, compute the simulation and store it into `r_simulation$simulate`.
 
-The **check_network()** function is part of the **plot_network()** code which was mentioned above. The simulate_flow() function is available here: [simulate_flow()](https://github.com/It4innovations/NTS/blob/main/R/simulation.R). Do not forget to add `@import shinyjs` at the top of **app_server.R**.
+The `check_network()` function is part of the `plot_network()` code which was mentioned above. The `simulate_flow()` function is available here: [`simulate_flow()`](https://github.com/It4innovations/NTS/blob/main/R/simulation.R). Do not forget to add `@import shinyjs` at the top of **app_server.R**.
 
 ```
 app_server <- function(input, output, session) {
@@ -502,7 +505,7 @@ app_server <- function(input, output, session) {
 }
 ```
 
-In other words, if the **r_simulation$simulation** is ready, prepare the animation **by animate_simulation()**, which can be downloaded here [animate_simulation()](https://github.com/It4innovations/NTS/blob/main/R/animate_simulation.R). If the animation is ready, output it by **plotly** and enable the action button.
+In other words, if the `r_simulation$simulation` is ready, prepare the animation by `animate_simulation()`, which can be downloaded here [`animate_simulation()`](https://github.com/It4innovations/NTS/blob/main/R/animate_simulation.R). If the animation is ready, output it by **plotly** and enable the action button.
 
 Congratulations, everything is ready to run the app. Type `golem::run_dev()` into the R console and try it yourself. The app should look like as in Fig.5, below.
 
