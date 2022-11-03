@@ -2,35 +2,35 @@
 
 ## Introduction
 
-To understand the terms of data analysis, or to learn a specific programming language (R in this case), can be difficult for many people. Thus, to provide a single application, which is user-friendly with added visualisations of the results could be very useful. To do so, it is important to put together requirements for such application. You have to ask yourself (or your customer), which unit it will be running on (cloud server, user laptop, mobile, ...), how big data sets you will be processing, or what features/functions to operate with you will need, and so on. Keep in mind, that requirements can change during the time based on the user feedback. Moreover, its better to start with a simple application and gradually adding new functionalites rather than planning and implementing whole application at once. So, implement individual functions as the individual modules, which can be simply modified in, added to or removed from the application. Further, to obtain some user feedback on the application, a mock-up design has to be created. The mock-up design helps you to ensure that the application satisfies all the specified requirements during the process. It also helps to check, if there is something missing in the app, if the app is understandable, or it is easy to work with. You can also realise that application contains features which are not necessarry for the whole software, and can be removed.
+To understand the terms of data analysis, or to learn a specific programming language (R in this case), can be difficult for many people. Providing a single user-friendly application containing visualisations of the results might be very useful. To do so, it is important to put together requirements for such application. You have to ask yourself (or your customer), which unit it will be running on (cloud server, user laptop, mobile, ...), how big data sets you will be processing, or what features or functions you will need, and so on. Keep in mind, that requirements can change during the time based on the user feedback. Moreover, it is better to start with a simple application and gradually add new functionalities rather than plan and implement whole application at once. Therefore, the recommendation is to implement individual functions as standalone modules. The modules can then be simply modified, added, or removed from the application. Further, to obtain some user feedback on the application, a mock-up design has to be created. The mock-up design helps you to ensure that the application satisfies all the specified requirements during the process. It also helps to check, if there is something missing in the app, if the app is understandable, or it is easy to work with. You can also realise that application contains features which are not necessarry for the whole software, and can be removed.
 
 ## Developing process
 
 The developing process can be summarised as follows:
 
 * define requirements for the application,
-* create mockup design,
+* create mock-up design,
 * select suitable technology (packages, tools),
 * create project enviroment (implement R base codes, move the codes to the application, use version control, create tests for the application, user testing, etc.)
-* if everything is OK, deploy the app.
+* if everything is all right, deploy the app.
 
-With this process at hand, you will be able to deploy the app without any further problems. If there will be some bugs or the requirements will be updated, just update the design, the codes, and build app again. In the text below, example of developing a simple "Shiny app" is provided. Also, brief summaries of R packages suitable for building the Shiny app are contained in the text.
+With this process at hand, you will be able to deploy the app without any further problems. If there are some bugs, or the requirements are updated, just update the design, the codes, and build app again. In the text below, example of developing a simple "Shiny app" is provided. Also, brief summaries of R packages suitable for building the Shiny app are contained in the text.
 
 ### Requirements
 
-The requirements are the foundation either of all softwares or all applications, which are being developed around the world. It is the very first step to make clear what are your needs. You have to specify the requirements on the software, or you have to ask your customer about them, at the very beginning of the development process. For example, consider the situation, in which you have to create following application:
+The requirements are integral part of all the softwares and applications, which are being developed around the world. It is the very first step to make clear what are your needs. You have to specify the requirements on the software, or you have to ask your customer about them, at the very beginning of the development process. For example, consider the situation, in which you have to create following application:
 
 * the application has to run either on Windows OS, Linux OS, or macOS, i.e. on notebook or desktop PC (R language is cross-platform!),
 * the user will work with own datasets (upload dataset, tidy dataset, show dataset, etc.),
 * the user will want to plot some dataset summaries,
 * the user will need some clustering methods,
-* also an authentication to the app will be needed (possibility using restricted data).
+* also an authentication to the app will be needed (for restricted data).
 
-If the list of requirements exists, you can start to develope the application. It is a good habit to implement funcionalities at R itself, at first. Then, move these functions, or modules, into the Shiny app. While moving into the Shiny app, you have to think about a mockup design of the application, i.e. how to put all the features together and connect them to a user interface.
+If the list of requirements exists, you can start developing the application. Since the Shiny serves as extension for R to create application using R code, it is a good habit to implement funcionalities at R itself and test them, at first. Then, move these functions, or modules, into the Shiny app. While moving into the Shiny app, you have to think about a mock-up design of the application, i.e. how to put all the features together and connect them to a user interface.
 
-### Mockup design
+### Mock-up design
 
-The mockup design is being created to provide a better idea of the graphical user iterface. Such a design helps you to realise:
+The mock-up design is being created to provide a better idea of the graphical user iterface. The draft version helps you realise:
 
 * what inputs are needed, and in which format (numeric, character, dataframe, ...),
 * what outputs will be produced, and in which format (numeric, character, dataframe, ...),
@@ -38,17 +38,17 @@ The mockup design is being created to provide a better idea of the graphical use
 * if the application will be single or multi page,
 * etc.
 
-You can create the mockup desing by hand on the paper, use some of the graphical softwares (designers), or implement basic UI straight into Shiny (if you are familiar with Shiny). If you have no experiences with creating mockup design (the application at all), we recommend you to use some of the existing designers. You can find plenty of them on the internet. They help you imagine how the inputs look like, help you create (responsive) layouts, and so on. If you are used to create some mockups, drawing desing by hand could be the fastest way, but not representative for a customer like the ones from the mockup designer.
+You can create the mock-up desing by hand on the paper, use some of the graphical softwares (designers), or implement basic UI straight into Shiny (if you are familiar with Shiny). If you have no experiences with creating mock-up design (the application at all), we recommend you to use some of the existing designers. You can find plenty of them on the internet. Just search, e.g., for "applications mock-up designer". They help you imagine how the inputs look like, help you create (responsive) layouts, and so on. Drawing design by hand can be the fastest way, especially if you are experienced in mock-up creation, but for a customer, output of the mock-up designer is probably more suitable.
 
-### Technology selection based on mockups and requirements
+### Package tool selection based on mock-ups and requirements
 
-With the mockup design and the requirements at hand, you can decide which technology, i.e. package (tool), you will use. You can work with package providing simple predefined template, or you can more utilise the template, etc.
+With the mock-up design and the requirements at hand, you can decide which package tool, you will use. You can work with package providing simple predefined template, or you can use packages providing feancy styling of the app components, etc.
 
 Focusing on the R programming language, which is commonly used for the data analysis, there are packages for the graphical interface such as Shiny, BS4Dash, or ShinyMobile in the R universe. These frameworks provide a set of functions which allow you to create standalone web applications or embed them into R markdown documents. You can create application with graphical interface similar to the existing webpages (webpage applications), or if you are familiar with CSS styling and JS, there could be no difference! Below, a brief introduction of each is given.
 
 #### Shiny
 
-Shiny is an R package that makes it easy to build interactive web apps straight from R. You can host standalone apps on a webpage or embed them in R markdown documents or build dashboards. You can also extend your Shiny apps with CSS themes, htmlwidgets, and JavaScript actions. You do not have to need any web development experience at all. Shiny includes built-in input widgets, which could be easily used with minimal syntax.
+Shiny is an R package that makes it easy to build interactive web apps straight from R. You can host standalone apps on a webpage or embed them in R markdown documents or build dashboards. You can also extend your Shiny apps with CSS themes, htmlwidgets, and JavaScript actions. You do not need any web development experience at all. Shiny includes built-in input widgets, which can be easily used with minimal syntax knowledge.
 
 For more information visit <https://shiny.rstudio.com/> .
 
@@ -66,17 +66,17 @@ For more information visit <https://rinterface.github.io/shinyMobile/> .
 
 #### Shiny extensions
 
-You know that there exist some frameworks for the R distribution, which could be used to create the application. There is also a gitlab repository containing structured list of many (not all) Shiny extensions at <https://github.com/nanxstats/awesome-shiny-extensions>. This is a good starting point to understand what is done in terms of Shiny development. Of course, you can look for another ones on the internet by yourself.
+There are lots of frameworks for the R distribution, which can be used to create the application. There is also a gitlab repository containing structured list of many (not all) Shiny extensions at <https://github.com/nanxstats/awesome-shiny-extensions>. This is a good starting point to understand what is done in terms of Shiny development. Of course, you can look for others on the internet yourself.
 
 ### Creation of the project environment
 
-The requirements help you to get an idea how complex your application will be. If the application will be simple, you can already start to implement the functions, the modules, without any advanced tools. However, some applications can be really complex. More complex an application is then the readability of a code could rapidly decrease, the code could be hard to debug due to many interconnections between modules, and so on. Also be aware of interface complexity, i.e. there are many inputs, or outputs defined in user interface to make application clearly understandable. To avoid problems like these, it is a good habit to find a balance between those two complexities. Think twice about the application before you start to implement it, but do not worry if it looks scary for the first sight. There exist frameworks, which helps you to manage whole project from the beginning, in the R universe. From the implementation step to the product deployment, so there will be less troubles in your developing process. One of such frameworks, the Golem package, is described below.
+The requirements help you to get an idea how complex your application will be. If the application will be simple, you can already start to implement the functions, the modules, without any advanced tools. However, some applications can be really complex. More complex applications have code readability issues. This can lead to difficult debugging due to many interconnections between modules, and so on. Also be aware of interface complexity, i.e. there are many inputs, or outputs defined in user interface to make application clearly understandable. To avoid problems like these, it is a good habit to find a balance between those two complexities. Think twice about the application before you start to implement it, but do not worry if it looks scary at first sight. In the R universe, there exist frameworks, which help you to manage the whole project from the beginning, starting with the implementation step all the way to the product deployment, so there will be less troubles in your development process. One of these frameworks, the Golem package, is described below.
 
 #### Golem package
 
 > Golem is a toolkit for simplifying the creation, development, and deployment of a shiny application.
 
-Everything about the golem package can be found at [https://engineering-shiny.org/](https://engineering-shiny.org/golem.html). The book also presents the idea of engineering process to develop and successfully deploy the app. Here, a short introduction of the golem package, as it is mentioned in the given book, is provided.
+Everything about the golem package can be found at [https://engineering-shiny.org/](https://engineering-shiny.org/golem.html). The book also presents the idea of engineering process to develop and successfully deploy the app. Here is a short introduction of the golem package as mentioned in the provided book.
 
 If you create a new golem project, in this case it is called golex (golem example), a structured folder architecture will be created.
 
@@ -105,17 +105,17 @@ golex
 
 At the **DESCRIPTION** file, you will add series of metadata about the application. The name of the author(s), version of the app, what is its purpose, etc. It will be filled automatically by running the scripts from **\\dev** folder. The **NAMESPACE** defines how to interact with the rest of the package (application) and it will never be touched by you. This file will be also created in an automated way when running the documenting process of your R package. All R functions (all app functions) will be held in **/R** folder. Each R file used during development should be stored in **/dev** folder. In the **/inst/app/ww,** you will keep every CSS or JS files which define the final look of your application. The golem configuration can be set in **golem-config.yml** or you can use **golem_opts** in the **run_app()** function. The purpose of the last **/man** folder is to held package documentation.
 
-As you can see, the golem package really helps you to implement and successfully deploy the app. It helps you to maintain the package structure and even build the app. For the other ideas of creating production-grade Shiny app and other information about the golem package, visit link above, please. You can use another source of information, of course. There are plenty of them in the internet.
+As you can see, the golem package really helps you to implement and successfully deploy the app. It helps you to maintain the package structure and even build the app. For more ideas to create production-grade Shiny app, and other information about the golem package, please visit the link above. You can use another source of information, of course. There are plenty of them in the internet.
 
 #### GitHub/GitLab
 
-Successfully develop the application cannot be possible without any "smart" code archives. If you are creating a complex package, you can easily make a mistake and you will disrupt the rest of the code. In that case, you will want to use last functional version of the application, so you have to archive it from time to time. The better way is to use a version system like Github, Gitlab, Bitbucket, and so on. You can upload whole new project, or just changes, fetch new data, etc. by simple **git** commands from terminal (command line). It will check every change from the last files to a new one, so if you make a mistake, you just use previous version of a file. Moreover, if you do not like terminal's (command line's) commands, you can use some of the existing graphical git softwares to manage your git repository or you can use built-in git system in the RStudio. If the git repository is initialised within the project folder, you can do all git commands from RStudio itself. The last option is to use web application of the used version systems to manage stored files. The most version systems provide such a thing. It is only up to you, which way is the most suitable for you.
+Successful development of larger applications cannot be possible without any "smart" code archives. If you are creating a complex package, you can easily make a mistake and you will disrupt the rest of the code. In that case, you will want to use last functional version of the application, so you have to archive it from time to time. The better way is to use a version system like Github, Gitlab, Bitbucket, and so on. You can upload whole new project, or just changes, fetch new data, etc. by simple **git** commands from terminal (command line). It will check every change from the last files to a new one, so if you make a mistake, you just use previous version of a file. Moreover, if you do not like terminal's (command line's) commands, you can use some of the existing graphical git softwares to manage your git repository or you can use built-in git system in the RStudio. If the git repository is initialised within the project folder, you can do all git commands from RStudio itself. The last option is to use web application of the used version systems to manage stored files. Most version systems provide this functionality. It is only up to you, which way is the most suitable for you.
 
 ### Tests
 
-Before the package is ready to deploy, the tests have to be done. It automatically check if the application could be built without any problems, functions act as expected and so on. In general, the tests can be divided in three sections:
+Before the package is ready to deploy, the tests have to be done. It automatically checks if the application can be built without any problems, functions behave as expected, and so on. In general, the tests can be divided in three sections:
 
-* Unit tests - functions acts as expected,
+* Unit tests - functions behave as expected,
 * Server function tests - testing of reactive components and outputs,
 * Snapshot-based tests - simulate user actions, like clicking on the buttons, take snapshots of the application state, and compare the app state with the saved snapshots.
 
@@ -135,11 +135,11 @@ In other words, you can release the application after all implementation is done
 
 ## Building blocks
 
-Some of the possible functionalities of the Shiny will be discussed in this section. You will learn about some approaches how to create a login screen, which plot libraries exist, how to use interactive data tables, how to transfer a data, connect your application to a database, and learn about the difference between R6 and S3 model.
+Some of the possible functionalities of the Shiny will be discussed in this section. Here you will learn how to create a login screen, which plot libraries exist, how to use interactive data tables, how to transfer data, connect your application to a database, and learn about the difference between R6 and S3 model.
 
 ### Login screen
 
-You don't have to be worry about whether the Shiny is able to provide a login screen, because it can! To learn how to create a login page, you can visit <https://towardsdatascience.com/r-shiny-authentication-incl-demo-app-a599b86c54f7>.
+You do not need to worry about whether the Shiny is able to provide a login screen, because it can! To learn how to create a login page, you can visit <https://towardsdatascience.com/r-shiny-authentication-incl-demo-app-a599b86c54f7>.
 
 The author of the given hands-on tutorial considers 3 approaches to build the login page:
 
@@ -151,7 +151,7 @@ You can find other tutorials on the internet, e.g. you can inspire yourself at <
 
 ### Visualisations - plot libraries
 
-The best way to get an idea how to interpret a data is to visualise them. The Shiny provides several methods to do so. You can use static plots, interactive plots, or you can even display the data on interactive maps using Leaflet package. Brief summaries for each of them are stated below.
+The first step to understand the data is to visualise them. The Shiny provides several methods to do so. You can use static plots, interactive plots, or you can even display the data on interactive maps using Leaflet package. Brief summaries for each of them are stated below.
 
 ##### Static
 
@@ -159,14 +159,14 @@ Usage of the static plots in the Shiny is quite the same as in R itself. Data ca
 
 ##### Interactive
 
-Using the interactive plots within the Shiny app could be a powerful feature. `plotOutput()` defines four different mouse events:
+Interactive plots within the Shiny app are powerful feature. `plotOutput()` defines four different mouse events:
 
 * **click** for a single mouse click,
 * **dblclick** for a double click,
 * **hover** to do something when mouse stays in the same place within the plot for a while,
 * **brush** to use a rectangular selection tool.
 
-Examples of the usage of given events could be found at <https://mastering-shiny.org/action-graphics.html>.
+The examples of the given events can be found <https://mastering-shiny.org/action-graphics.html>.
 
 For some advanced interactive plots, visit <https://shiny.rstudio.com/articles/plot-interaction-advanced.html>.
 
@@ -194,7 +194,7 @@ Rendering data in the static table is done using `tableOutput()` and `renderTabl
 
 Interactive tables are the best way to represent data frames in the Shiny app. You can use built-in commands such as `dataTableOutput()` and `renderDataTable()` or use another package such as **reactable**, see <https://glin.github.io/reactable/index.html>.
 
-With the use of interactive tables, you can use search, to sort columns, define number of visible rows per page, navigate through the table's pages, and so on.
+Interactive tables have wide range of utilities like search function, sort columns, define number of visible rows per page, navigate through the table's pages, and so on.
 
 ### Data transfer logic
 
@@ -220,16 +220,17 @@ As the Shiny was becoming more popular, there was a growing need to connect the 
 
 You can use **dplyr** package to manage remote data as the local in-memory data. If you need to do more advanced operations, the **DBI** package will be more suitable for you. How to use **dplyr** and **DBI** package with a remote database is described at <https://shiny.rstudio.com/articles/overview.html>.
 
-Beware of secure vulnerability attempting the external database. To learn something about the SQL injection prevention, visit <https://shiny.rstudio.com/articles/sql-injections.html>.
+Beware of secure vulnerability when attempting the external database. To learn something about the SQL injection prevention, visit <https://shiny.rstudio.com/articles/sql-injections.html>.
 
 ## Alpha version
 
 Imagine a situation where you have to create an application in which you will load data of a network graph from the CSV file and run a simulation of the throughput of the graph. The vertices of the graph will represent individual stations in the process and the weights will be a time needed to move from one station to another. The input of the simulator will also be a number of people that will go through the graph. The example will start with preparing the new project in RStudio and will continue through the creation of necessary functions to the successful run of the whole application. Only the basic Shiny functions will be used.
 
-First, run the RStudio and install the Golem package as well as the Shiny package (if you have not already done it):
+First, run the RStudio and install the Golem package as well as the Shiny package (if you have not already done it), and load them:
 
 ```
 install.packages("golem, shiny, shinyjs")
+library("golem, shiny, shinyjs")
 ```
 
 Make sure that you have also installed **dplyr**, **plotly**, and **utils** packages.
@@ -248,7 +249,11 @@ repo_url = NULL
 
 It also contains other usefull functions like function to prepare git repository, prepare testing infrastructure, and so on. After you have defined the description as above you can simply run **01_start.R** and everything will be set automatically. You can check the **DESCRIPTION** file if you want to be sure. As all is set up, run `golem::run_dev()`. The very first app window will appear (Fig.1) and you can move into **R** folder where all needed functions for the app will be defined.
 
-![First screen.](shiny_01.png?fileId=491342#mimetype=image%2Fpng&hasPreview=true)You can create your own header using the basic **h1** tag along with css on the UI side (**app_ui.R**), e.g.,
+| ![Fig.1.](/readme_img/shiny_01.png)      |
+| ---------------------------------------- |
+| Fig.1: The first run of the application. |
+
+You can create your own header using the basic **h1** tag along with css on the UI side (**app_ui.R**), e.g.,
 
 ```
 app_ui <- function(request) {
@@ -265,7 +270,11 @@ app_ui <- function(request) {
 }
 ```
 
-Given code is inserted in **app_ui.R** file and yields in a more styled header as it is seen in Fig.2.
+Given code is inserted in **app_ui.R** file and results in a differently styled header as seen in Fig.2.
+
+| ![Fig.2.](/readme_img/shiny_02.png)      |
+| ---------------------------------------- |
+| Fig.2: Updated header. |
 
 ```
 To divide the application into "loading page" and "simulation page", you can use Shiny's tabsets layout.
@@ -290,7 +299,11 @@ app_ui <- function(request) {
 
 The resulting layout is shown in Fig.3.
 
-![shiny_03.png](shiny_03.png?fileId=491440#mimetype=image%2Fpng&hasPreview=true)Now, you need to put some logic in code to upload a csv file and subsequently plot it. On the UI side, insert following lines of code in the **tabsetPanel()**
+| ![Fig.3.](/readme_img/shiny_03.png)      |
+| ---------------------------------------- |
+| Fig.3: Layout of the application. |
+
+Now, you need to put some logic in code to upload a csv file and subsequently plot it. On the UI side, insert following lines of code in the **tabsetPanel()**
 
 ```
 tabPanel("Input",
@@ -327,9 +340,13 @@ app_server <- function(input, output, session) {
 
 The data of the graph is prepared in a reactive way using **reactiveValues()**. You can add as many variables as you need. In this example, one variable **r$df_network** will be sufficient. Further, the **input$upload** is **NULL** when the app is launched. There is no data available, yet. When its state is changed, it will trigger the **observeEvent()**. An alternative is to use the **req()** which ensures the following lines of code are triggered after some data arrives (look into **renderPlotly()**). It blocks the **NULL** state to proceed. Thus, when the data (**r$df_network**) is ready, they are sent to the **plot_network()** function. The output of the **plot_network()** represents data in a format suitable for the **plotlyOutput()** and they are stored in **output$network**. At the end of the process, the **output$network** is used by **plotlyOutput()** on the UI side. As the **plot_network()** is quite complex, the full code can be downloaded here [plot_network() code](https://github.com/It4innovations/NTS/blob/main/R/plot_network.R). Feel free to browse through the given code.
 
-An example CSV file can be downloaded [HERE](HERE). In short, the CSV file consists of 5 columns: **from**, **to**, **weight**, **level**, and **set**. Columns **from** and **to** contain the name of nodes connected by a single edge. The **weight** represents the weight of each edge. The **level** holds the levels of each edge, i.e. that the given edge belongs to the set of "the first floor" ("the first row"), "the second floor" ("the second row"), and so on. The **set** represents the common sets of the edges within "one floor" ("one row"). Different sets of one row will be drawed by different color. So, after the **example_network.csv** is uploaded into the app, the graph of the network is plotted, see Fig.4.
+An example CSV file can be downloaded [here](https://code.it4i.cz/ADAS-Private/shiny-bpg/-/blob/main/inst/app/example_network.csv). In short, the CSV file consists of 5 columns: **from**, **to**, **weight**, **level**, and **set**. Columns **from** and **to** contain the name of nodes connected by a single edge. The **weight** represents the weight of each edge. The **level** holds the levels of each edge, i.e. that the given edge belongs to the set of "the first floor" ("the first row"), "the second floor" ("the second row"), and so on. The **set** represents the common sets of the edges within "one floor" ("one row"). Different sets of one row will be drawed by different color. So, after the **example_network.csv** is uploaded into the app, the graph of the network is plotted, see Fig.4.
 
-![shiny_04.png](shiny_04.png?fileId=491607#mimetype=image%2Fpng&hasPreview=true)At this moment, you have prepared the input data for the simulation. Thus, the logic for the simulation along with the simulation function has to be created. As it was said above, the input for the simulator is the graph itself and the number of people that will go through the graph. To do so, you can use the following code on the UI side into **tabsetPanel()**.
+| ![Fig.4.](/readme_img/shiny_04.png)      |
+| ---------------------------------------- |
+| Fig.4: Loaded graph. |
+
+At this moment, you have prepared the input data for the simulation. Thus, the logic for the simulation along with the simulation function has to be created. As it was said above, the input for the simulator is the graph itself and the number of people that will go through the graph. To do so, you can use the following code on the UI side into **tabsetPanel()**.
 
 ```
 tabPanel("Simulation",
@@ -482,8 +499,16 @@ In other words, if the **r_simulation$simulation** is ready, prepare the animati
 
 Congratulations, everything is ready to run the app. Type `golem::run_dev()` into the R console and try it yourself. The app should look like as in Fig.5, below.
 
-![shiny_run_final.gif](shiny_run_final.gif?fileId=494782#mimetype=image%2Fgif&hasPreview=true)
+| ![Fig.5.](/readme_img/shiny_run_final.gif) |
+| ------------------------------------------ |
+| Fig.5: Example run of the application.     |
 
 ### Adjustments based on customers review
 
-There was an update from the users that they want to add an option to create and edit graph within the application. Also, export the graph into a csv file is needed such as adding special events that may occur in the simulation. Such application already exists. You can try it yourself at <https://shiny.vsb.cz/app/nts-shiny>. The source codes are available here [NTS backend](https://github.com/It4innovations/NTS/) and [NTS Shiny](https://github.com/It4innovations/NTS_shiny/). It extends the functionality of the app above. The **bs4dash** features was used to easily style the app.
+There was an update from the users that they want to add following features:
+
+* create and edit graph within the application,
+* export the graph into a csv file,
+* add special events that may occur in the simulation (e.g. lunch break).
+
+Such application already exists. You can try it yourself at <https://shiny.vsb.cz/app/nts-shiny>. The source codes are available here [NTS backend](https://github.com/It4innovations/NTS/) and [NTS Shiny](https://github.com/It4innovations/NTS_shiny/). It extends the functionality of the app above. The **bs4dash** features was used to easily style the app.
