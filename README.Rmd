@@ -3,6 +3,7 @@ header-includes:
   - \usepackage{fancyhdr}
   - \usepackage{lipsum}
   - \usepackage{pmboxdraw}
+  - \usepackage{tcolorbox}
   - \pagestyle{fancy}
   - \fancyfoot[CO,C]{© Copyright 2022 Beneficiaries of the EuroCC/Castiel Project}
   - \fancyfoot[RO]{\thepage}
@@ -12,6 +13,7 @@ output:
     number_sections: true
 ---
 
+
 \begin{center}
 
   \includegraphics[width=0.3\textwidth]{media/image1.jpeg}
@@ -19,8 +21,12 @@ output:
   \bigskip \bigskip \bigskip \bigskip \bigskip 
 
   \LARGE\textbf{Developing Shiny application}
+  
+  \bigskip \bigskip 
 
-  \bigskip \bigskip \bigskip 
+  \large{Ing. Ladislav Foltyn}
+
+  \bigskip \bigskip 
 
   \LARGE{Best Practice Guide}
   
@@ -122,33 +128,38 @@ The requirements help you to get an idea how complex your application will be. I
 
 > Golem is a toolkit for simplifying the creation, development, and deployment of a shiny application.
 
-Everything about the golem package can be found at [https://engineering-shiny.org/](https://engineering-shiny.org/golem.html). The book also presents the idea of engineering process to develop and successfully deploy the app. Here is a short introduction of the golem package as mentioned in the provided book.
+Everything about the golem package can be found at <https://engineering-shiny.org/golem.html>. The book also presents the idea of engineering process to develop and successfully deploy the app. Here is a short introduction of the golem package as mentioned in the provided book.
 
-If you create a new golem project, in this case it is called golex (golem example), a structured folder architecture will be created.
+If you create a new golem project, in this case it is called golex (golem example), a structured folder architecture will be created as it can be seen below.
 
+At the **DESCRIPTION** file, you will add series of metadata about the application. The name of the author(s), version of the app, what is its purpose, etc. It will be filled automatically by running the scripts from **\\dev** folder. The **NAMESPACE** defines how to interact with the rest of the package (application) and it will never be touched by you. This file will be also created in an automated way when running the documenting process of your R package. All R functions (all app functions) will be held in **/R** folder. Each R file used during development should be stored in **/dev** folder. In the **/inst/app/ww,** you will keep every CSS or JS files which define the final look of your application. The golem configuration can be set in **golem-config.yml** or you can use **golem_opts** in the `run_app()` function. The purpose of the last **/man** folder is to held package documentation.
+
+\newpage
+
+--------------------------------------------------------------------------------
 ```{r, echo = FALSE}
 knitr::asis_output("golex\n
 \U251C\U2500\U2500 DESCRIPTION\n
 \U251C\U2500\U2500 NAMESPACE\n
 \U251C\U2500\U2500 R\n
-\U2502   \U251C\U2500\U2500 app_config.R\n
-\U2502   \U251C\U2500\U2500 app_server.R\n
-\U2502   \U251C\U2500\U2500 app_ui.R\n
-\U2502   \U2514\U2500\U2500 run_app.R\n
+\U2502\U00A0\U00A0\U00A0\U00A0\U00A0\U251C\U2500\U2500 app_config.R\n
+\U2502\U00A0\U00A0\U00A0\U00A0\U00A0\U251C\U2500\U2500 app_server.R\n
+\U2502\U00A0\U00A0\U00A0\U00A0\U00A0\U251C\U2500\U2500 app_ui.R\n
+\U2502\U00A0\U00A0\U00A0\U00A0\U00A0\U2514\U2500\U2500 run_app.R\n
 \U251C\U2500\U2500 dev\n
-\U2502   \U251C\U2500\U2500 01_start.R\n
-\U2502   \U251C\U2500\U2500 02_dev.R\n
-\U2502   \U251C\U2500\U2500 03_deploy.R\n
-\U2502   \U2514\U2500\U2500 run_dev.R\n
+\U2502\U00A0\U00A0\U00A0\U00A0\U00A0\U251C\U2500\U2500 01_start.R\n
+\U2502\U00A0\U00A0\U00A0\U00A0\U00A0\U251C\U2500\U2500 02_dev.R\n
+\U2502\U00A0\U00A0\U00A0\U00A0\U00A0\U251C\U2500\U2500 03_deploy.R\n
+\U2502\U00A0\U00A0\U00A0\U00A0\U00A0\U2514\U2500\U2500 run_dev.R\n
 \U251C\U2500\U2500 inst\n
-\U2502   \U251C\U2500\U2500 app\n
-\U2502   \U2502   \U2514\U2500\U2500 www\n
-\U2502   \U2502       \U2514\U2500\U2500 favicon.ico\n
-\U2502   \U2514\U2500\U2500 golem-config.yml\n
+\U2502\U00A0\U00A0\U00A0\U00A0\U00A0\U251C\U2500\U2500 app\n
+\U2502\U00A0\U00A0\U00A0\U00A0\U00A0\U2502\U00A0\U00A0\U00A0\U00A0\U2514\U2500\U2500 www\n
+\U2502\U00A0\U00A0\U00A0\U00A0\U00A0\U2502\U00A0\U00A0\U00A0\U00A0\U00A0\U00A0\U00A0\U00A0\U00A0\U00A0\U2514\U2500\U2500 favicon.ico\n
+\U2502\U00A0\U00A0\U00A0\U00A0\U00A0\U2514\U2500\U2500 golem-config.yml\n
 \U2514\U2500\U2500 man\n
-    \U2514\U2500\U2500 run_app.Rd")
+\U00A0\U00A0\U00A0\U00A0\U00A0\U00A0\U00A0\U2514\U2500\U2500 run_app.Rd")
 ```
-At the **DESCRIPTION** file, you will add series of metadata about the application. The name of the author(s), version of the app, what is its purpose, etc. It will be filled automatically by running the scripts from **\\dev** folder. The **NAMESPACE** defines how to interact with the rest of the package (application) and it will never be touched by you. This file will be also created in an automated way when running the documenting process of your R package. All R functions (all app functions) will be held in **/R** folder. Each R file used during development should be stored in **/dev** folder. In the **/inst/app/ww,** you will keep every CSS or JS files which define the final look of your application. The golem configuration can be set in **golem-config.yml** or you can use **golem_opts** in the **run_app()** function. The purpose of the last **/man** folder is to held package documentation.
+--------------------------------------------------------------------------------
 
 As you can see, the golem package really helps you to implement and successfully deploy the app. It helps you to maintain the package structure and even build the app. For more ideas to create production-grade Shiny app, and other information about the golem package, please visit the link above. You can use another source of information, of course. There are plenty of them in the internet.
 
@@ -160,11 +171,11 @@ Successful development of larger applications cannot be possible without any "sm
 
 Before the package is ready to deploy, the tests have to be done. It automatically checks if the application can be built without any problems, functions behave as expected, and so on. In general, the tests can be divided in three sections:
 
-* Unit tests - functions behave as expected,
-* Server function tests - testing of reactive components and outputs,
-* Snapshot-based tests - simulate user actions, like clicking on the buttons, take snapshots of the application state, and compare the app state with the saved snapshots.
+* **Unit tests** -- functions behave as expected,
+* **Server function tests** -- testing of reactive components and outputs,
+* **Snapshot-based tests** -- simulate user actions, like clicking on the buttons, take snapshots of the application state, and compare the app state with the saved snapshots.
 
-You can for example use **runTests()** function in Shiny 1.5.0 and more to test your app. Simple example of application with defined tests can be created by **shinyAppTemplate("app_name")** with used option **1: All**. It will generate folder structure with **/tests**. For more information, see <https://shiny.rstudio.com/articles/testing-overview.html>. Code tests can be also done with a testthat package, see <https://testthat.r-lib.org/>.
+You can for example use `runTests()` function in Shiny 1.5.0 and more to test your app. Simple example of application with defined tests can be created by `shinyAppTemplate("app_name")` with used option **1: All**. It will generate folder structure with **/tests**. For more information, see <https://shiny.rstudio.com/articles/testing-overview.html>. Code tests can be also done with a testthat package, see <https://testthat.r-lib.org/>.
 
 ### Continuous integration
 
@@ -198,18 +209,18 @@ You can find other tutorials on the internet, e.g. you can inspire yourself at <
 
 The first step to understand the data is to visualise them. The Shiny provides several methods to do so. You can use static plots, interactive plots, or you can even display the data on interactive maps using Leaflet package. Brief summaries for each of them are stated below.
 
-#### Static
+### Static
 
 Usage of the static plots in the Shiny is quite the same as in R itself. Data can be visualised using for example ggplot2 library. Hovewer, there is one difference in the Shiny. You have to use `plotOutput()` command on the UI side, and `renderPlot()` on the server side. Displaying the images is also possible in the Shiny. To render an image, you will use `imageOutput()` and `renderImage()`. Look into the help to get familiar with these commands.
 
-#### Interactive
+### Interactive
 
 Interactive plots within the Shiny app are powerful feature. `plotOutput()` defines four different mouse events:
 
-* **click** for a single mouse click,
-* **dblclick** for a double click,
-* **hover** to do something when mouse stays in the same place within the plot for a while,
-* **brush** to use a rectangular selection tool.
+* **click** -- for a single mouse click,
+* **dblclick** -- for a double click,
+* **hover** -- to do something when mouse stays in the same place within the plot for a while,
+* **brush** -- to use a rectangular selection tool.
 
 The examples of the given events can be found <https://mastering-shiny.org/action-graphics.html>.
 
@@ -217,11 +228,11 @@ For some advanced interactive plots, visit <https://shiny.rstudio.com/articles/p
 
 While creating an interactive plots, you have to keep in mind that it takes some time to respond to the event. In other words, when you click into a plot, the application has to register the event, evaluate the event (do defined operations), and render updated plot. You also have to take into account a response of the server (transfer speed) if you deployed the app at the website.
 
-#### Leaflet
+### Leaflet
 
 As it is stated at the website <https://rstudio.github.io/leaflet/>.
 
-> [Leaflet](https://leafletjs.com) is one of the most popular open-source JavaScript libraries for interactive maps. It’s used by websites ranging from [The New York Times](http://www.nytimes.com/projects/elections/2013/nyc-primary/mayor/map.html) and [The Washington Post](http://www.washingtonpost.com/sf/local/2013/11/09/washington-a-world-apart/) to [GitHub](https://github.com/blog/1528-there-s-a-map-for-that) and [Flickr](https://www.flickr.com/map), as well as GIS specialists like [OpenStreetMap](http://www.openstreetmap.org/), [Mapbox](http://www.mapbox.com/), and [CartoDB](http://cartodb.com/).
+> Leaflet (<https://leafletjs.com>) is one of the most popular open-source JavaScript libraries for interactive maps. It’s used by websites ranging from The New York Times (<http://www.nytimes.com/projects/elections/2013/nyc-primary/mayor/map.html>) and The Washington Post (<http://www.washingtonpost.com/sf/local/2013/11/09/washington-a-world-apart/>) to GitHub (<https://github.com/blog/1528-there-s-a-map-for-that>) and Flickr (<https://www.flickr.com/map>), as well as GIS specialists like OpenStreetMap (<http://www.openstreetmap.org/>), Mapbox (<http://www.mapbox.com/>), and CartoDB (<http://cartodb.com/>).
 >
 > This R package makes it easy to integrate and control Leaflet maps in R.
 
@@ -231,11 +242,11 @@ The Leaflet package provides functions to easily integrate the maps into the Shi
 
 There are two ways to display data in tables. A static one and a dynamic one. It depends whether you need to just display the data or you need to filter and sort visualised data.
 
-#### Static
+### Static
 
 Rendering data in the static table is done using `tableOutput()` and `renderTable()`. It will display the data in the given place of the app. Static table is suitable for displaying small matrices and data frames.
 
-#### Interactive
+### Interactive
 
 Interactive tables are the best way to represent data frames in the Shiny app. You can use built-in commands such as `dataTableOutput()` and `renderDataTable()` or use another package such as **reactable**, see <https://glin.github.io/reactable/index.html>.
 
@@ -245,17 +256,17 @@ Interactive tables have wide range of utilities like search function, sort colum
 
 To work with a data within the Shiny app, you have to (in general) **upload** the data into it. In the UI, use `fileInput()` with defined id and label. On the server side, things are a bit more complicated. Most inputs in the Shiny return simple vectors, but `fileInput()` returns a data frame with four columns:
 
-* **name** as original file name on the user's computer,
-* **size** as the size of the file,
-* **type** in which the MIME type of the file is specified,
-* **datapath** as a path to where the data has been uploaded on the server.
+* **name** -- as original file name on the user's computer,
+* **size** -- as the size of the file,
+* **type** -- in which the MIME type of the file is specified,
+* **datapath** -- as a path to where the data has been uploaded on the server.
 
-The simplest way to eliminate undesirable file formats is to define the allowed (acceptable) formats in `fileInput()`. Allowed formats are defined by the parametr `accept`, e. g. `fileInput("upload", "Upload a file", accept = c(".csv", ".tsv"))`. To avoid any further errors, it is necessary to use `req(input$upload)` on the server side, because after the page is loaded, the `input$upload` is `NULL`.
+The simplest way to eliminate undesirable file formats is to define the allowed (acceptable) formats in `fileInput()`. Allowed formats are defined by the parametr `accept`, e. g., `fileInput("upload", "Upload a file", accept = c(".csv", ".tsv"))`. To avoid any further errors, it is necessary to use `req(input$upload)` on the server side, because after the page is loaded, the `input$upload` is `NULL`.
 
 To create a download action on the UI side, use `downloadButton()` or `downloadLink()`. A command downloadHandler(filename, content) is used on the server side. It has two parameters
 
-* **filename** - a function, which returns a file name,
-* **content** - a function with one argument (`file`), which is the path to save the file.
+* **filename** -- a function, which returns a file name,
+* **content** -- a function with one argument (`file`), which is the path to save the file.
 
 For more information about uploading and downloading data, visit <https://mastering-shiny.org/action-transfer.html>.
 
@@ -273,7 +284,7 @@ Imagine a situation where you have to create an application in which you will lo
 
 First, run the RStudio and install the Golem package as well as the Shiny package (if you have not already done it), and load them:
 
-```
+```{r, eval=FALSE, class.output='r'}
 install.packages("golem, shiny, shinyjs")
 library("golem, shiny, shinyjs")
 ```
@@ -282,25 +293,31 @@ Make sure that you have also installed **dplyr**, **plotly**, and **utils** pack
 
 Then, make a new empty project **File > New Project... > New Directory > Create Package for Shiny App using golem**. You can name the directory, e.g., as **graphapp**. It will create the directory structure of the package as it has been discussed above. It will also open a **dev/01_start.R** file in which you can define a description of the package in lines **21-29**, e.g.,
 
-```
-pkg_name = "graphapp,   
+```{r, eval=FALSE}
+pkg_name = "graphapp",   
 pkg_title = "Graph simulator",    
-pkg_description = "Graph simulator loads a network graph from a CSV file and runs the simulation of its troughput.",    
+pkg_description = "Graph simulator loads a network graph 
+                   from a CSV file and runs the simulation 
+                   of its troughput.",    
 author_first_name = "John",    
 author_last_name = "Doe",    
 author_email = "john.doe@email.com",    
 repo_url = NULL
 ```
 
-It also contains other usefull functions like function to prepare git repository, prepare testing infrastructure, and so on. After you have defined the description as above you can simply run **01_start.R** and everything will be set automatically. You can check the **DESCRIPTION** file if you want to be sure. As all is set up, run `golem::run_dev()`. The very first app window will appear (Fig.1) and you can move into **R** folder where all needed functions for the app will be defined.
+It also contains other usefull functions like function to prepare git repository, prepare testing infrastructure, and so on. After you have defined the description as above you can simply run **01_start.R** and everything will be set automatically. You can check the **DESCRIPTION** file if you want to be sure. As all is set up, run `golem::run_dev()`. The very first app window will appear (Figure \ref{fig1}) and you can move into **R** folder where all needed functions for the app will be defined.
 
-| ![Fig.1.](readme_img/shiny_01.png)      |
-| ---------------------------------------- |
-| Fig.1: The first run of the application. |
+\begin{figure}[ht]
+  \includegraphics{readme_img/shiny_01.png}
+  \caption{The first run of the application.}
+  \label{fig1}
+\end{figure}
+
+\newpage
 
 You can create your own header using the basic **h1** tag along with css on the UI side (**app_ui.R**), e.g.,
 
-```
+```{r, eval=FALSE}
 app_ui <- function(request) {
     tagList(
         # code snippet...
@@ -315,17 +332,18 @@ app_ui <- function(request) {
 }
 ```
 
-Given code is inserted in **app_ui.R** file and results in a differently styled header as seen in Fig.2.
+Given code is inserted in **app_ui.R** file and results in a differently styled header as seen in Figure \ref{fig2}.
+\begin{figure}[ht]
+  \includegraphics{readme_img/shiny_02.png}
+  \caption{Updated header.}
+  \label{fig2}
+\end{figure}
 
-| ![Fig.2.](readme_img/shiny_02.png)      |
-| ---------------------------------------- |
-| Fig.2: Updated header. |
+\newpage
 
-```
 To divide the application into "loading page" and "simulation page", you can use Shiny's tabsets layout.
-```
 
-```
+```{r, eval=FALSE}
 app_ui <- function(request) {
     # code snippet...
 
@@ -342,15 +360,19 @@ app_ui <- function(request) {
 }
 ```
 
-The resulting layout is shown in Fig.3.
+The resulting layout is shown in Figure \ref{fig3}.
 
-| ![Fig.3.](readme_img/shiny_03.png)      |
-| ---------------------------------------- |
-| Fig.3: Layout of the application. |
+\begin{figure}[ht]
+  \includegraphics{readme_img/shiny_03.png}
+  \caption{Layout of the application.}
+  \label{fig3}
+\end{figure}
 
-Now, you need to put some logic in code to upload a csv file and subsequently plot it. On the UI side, insert following lines of code in the **tabsetPanel()**
+\newpage
 
-```
+Now, you need to put some logic in code to upload a csv file and subsequently plot it. On the UI side, insert following lines of code in the `tabsetPanel()`
+
+```{r, eval=FALSE}
 tabPanel("Input",
          h3("Load network graph"),
          fileInput("upload", label = NULL),
@@ -358,9 +380,9 @@ tabPanel("Input",
 )
 ```
 
-The **fileInput()** creates a button to open a file explorer. Once the file is selected, it is sent to the server side under the id **input$upload**. The **plotlyOutput()** prepares the ground for the upcoming output from the server side under the id **output$network**. On the server side, i.e. **app_server.R**, the following needs to be done.
+The `fileInput()` creates a button to open a file explorer. Once the file is selected, it is sent to the server side under the id `input$upload`. The `plotlyOutput()` prepares the ground for the upcoming output from the server side under the id `output$network`. On the server side, i.e. **app_server.R**, the following needs to be done.
 
-```
+```{r, eval=FALSE}
 app_server <- function(input, output, session) {
   # dataframe variable(s) ----
   r <- reactiveValues(
@@ -383,17 +405,21 @@ app_server <- function(input, output, session) {
 }
 ```
 
-The data of the graph is prepared in a reactive way using **reactiveValues()**. You can add as many variables as you need. In this example, one variable **r$df_network** will be sufficient. Further, the **input$upload** is **NULL** when the app is launched. There is no data available, yet. When its state is changed, it will trigger the **observeEvent()**. An alternative is to use the **req()** which ensures the following lines of code are triggered after some data arrives (look into **renderPlotly()**). It blocks the **NULL** state to proceed. Thus, when the data (**r$df_network**) is ready, they are sent to the **plot_network()** function. The output of the **plot_network()** represents data in a format suitable for the **plotlyOutput()** and they are stored in **output$network**. At the end of the process, the **output$network** is used by **plotlyOutput()** on the UI side. As the **plot_network()** is quite complex, the full code can be downloaded here [plot_network() code](https://github.com/It4innovations/NTS/blob/main/R/plot_network.R). Feel free to browse through the given code.
+The data of the graph is prepared in a reactive way using `reactiveValues()`. You can add as many variables as you need. In this example, one variable `r$df_network` will be sufficient. Further, the `input$upload` is `NULL` when the app is launched. There is no data available, yet. When its state is changed, it will trigger the `observeEvent()`. An alternative is to use the `req()` which ensures the following lines of code are triggered after some data arrives (look into `renderPlotly()`). It blocks the `NULL` state to proceed. Thus, when the data (`r$df_network`) is ready, they are sent to the `plot_network()` function. The output of the `plot_network()` represents data in a format suitable for the `plotlyOutput()` and they are stored in `output$network`. At the end of the process, the `output$network` is used by `plotlyOutput()` on the UI side. As the `plot_network()` is quite complex, the full code can be downloaded from <https://github.com/It4innovations/NTS/blob/main/R/plot_network.R>. Feel free to browse through the given code.
 
-An example CSV file can be downloaded [here](https://code.it4i.cz/ADAS-Private/shiny-bpg/-/blob/main/inst/app/example_network.csv). In short, the CSV file consists of 5 columns: **from**, **to**, **weight**, **level**, and **set**. Columns **from** and **to** contain the name of nodes connected by a single edge. The **weight** represents the weight of each edge. The **level** holds the levels of each edge, i.e. that the given edge belongs to the set of "the first floor" ("the first row"), "the second floor" ("the second row"), and so on. The **set** represents the common sets of the edges within "one floor" ("one row"). Different sets of one row will be drawed by different color. So, after the **example_network.csv** is uploaded into the app, the graph of the network is plotted, see Fig.4.
+An example CSV file can be downloaded from <https://code.it4i.cz/ADAS-Private/shiny-bpg/-/blob/main/inst/app/example_network.csv>. In short, the CSV file consists of 5 columns: **from**, **to**, **weight**, **level**, and **set**. Columns **from** and **to** contain the name of nodes connected by a single edge. The **weight** represents the weight of each edge. The **level** holds the levels of each edge, i.e. that the given edge belongs to the set of "the first floor" ("the first row"), "the second floor" ("the second row"), and so on. The **set** represents the common sets of the edges within "one floor" ("one row"). Different sets of one row will be drawed by different color. So, after the **example_network.csv** is uploaded into the app, the graph of the network is plotted, see Figure \ref{fig4}.
 
-| ![Fig.4.](readme_img/shiny_04.png)      |
-| ---------------------------------------- |
-| Fig.4: Loaded graph. |
+\begin{figure}[ht]
+  \includegraphics{readme_img/shiny_04.png}
+  \caption{Layout of the application.}
+  \label{fig4}
+\end{figure}
 
-At this moment, you have prepared the input data for the simulation. Thus, the logic for the simulation along with the simulation function has to be created. As it was said above, the input for the simulator is the graph itself and the number of people that will go through the graph. To do so, you can use the following code on the UI side into **tabsetPanel()**.
+\newpage
 
-```
+At this moment, you have prepared the input data for the simulation. Thus, the logic for the simulation along with the simulation function has to be created. As it was said above, the input for the simulator is the graph itself and the number of people that will go through the graph. To do so, you can use the following code on the UI side into `tabsetPanel()`.
+
+```{r, eval=FALSE}
 tabPanel("Simulation",
     numericInput("input_people",
                  label = "Set the number of people that should enter the 
@@ -413,11 +439,11 @@ tabPanel("Simulation",
 )
 ```
 
-By the **numericInput()**, the number of people will be set. The minimum number of people is set to 10 and the maximum to 5000. If the number of people will be out of range, the error will be triggered on server side and outputed into **textOutput("error_people")**. The **actionButton()** will start the simulation. The simulation will be plotted by **plotlyOutput()**. Moreover, the **textOutput("error_graph")** will output an error message that the button was clicked but there is no graph loaded.
+By the `numericInput()`, the number of people will be set. The minimum number of people is set to 10 and the maximum to 5000. If the number of people will be out of range, the error will be triggered on server side and outputed into `textOutput("error_people")`. The `actionButton()` will start the simulation. The simulation will be plotted by `plotlyOutput()`. Moreover, the `textOutput("error_graph")` will output an error message that the button was clicked but there is no graph loaded.
 
-The texts in **textOuput()** has black font as default. To change it, you have to add **tags$style** into **tags$head** on the UI side. Add `shinyjs::useShinyjs()`as well, it will be used later.
+The texts in `textOuput()` has black font as default. To change it, you have to add `tags$style` into `tags$head` on the UI side. Add `shinyjs::useShinyjs()`as well, it will be used later.
 
-```
+```{r, eval=FALSE}
 tags$head(
     # some code snippet...
 
@@ -428,7 +454,7 @@ tags$head(
 
 On the server side, prepare reactive values for the simulation.
 
-```
+```{r, eval=FALSE}
 app_server <- function(input, output, session) {
     # code snippet...
 
@@ -441,9 +467,9 @@ app_server <- function(input, output, session) {
 }
 ```
 
-Then, observe if the **actionButton()** was clicked.
+Then, observe if the `actionButton()` was clicked.
 
-```
+```{r, eval=FALSE}
 app_server <- function(input, output, session) {
     # code snippet...
 
@@ -460,11 +486,11 @@ app_server <- function(input, output, session) {
 }
 ```
 
-As you can see, all the variables are reset after button was clicked. The `shinyjs::disable("run")` disables the action button so you will not be able to click on it until after the computation of the simulation is done. The `r_simulation$continue <- TRUE` tells the server that the algorithm for the simulation can start. The simulation reads as follows: If the **r_simulate$continue** is **TRUE**, check if the **input$input_people** is within the range. If not, output the error. If yes, check if the network is loaded and there is an exit (sink) vertex in it. If something is missing, output the error. If it is successful, compute the simulation and store it into **r_simulation$simulate**.
+As you can see, all the variables are reset after button was clicked. The `shinyjs::disable("run")` disables the action button so you will not be able to click on it until after the computation of the simulation is done. The `r_simulation$continue <- TRUE` tells the server that the algorithm for the simulation can start. The simulation reads as follows: If the `r_simulate$continue` is `TRUE`, check if the `input$input_people` is within the range. If not, output the error. If yes, check if the network is loaded and there is an exit (sink) vertex in it. If something is missing, output the error. If it is successful, compute the simulation and store it into `r_simulation$simulate`.
 
-The **check_network()** function is part of the **plot_network()** code which was mentioned above. The simulate_flow() function is available here: [simulate_flow()](https://github.com/It4innovations/NTS/blob/main/R/simulation.R). Do not forget to add `@import shinyjs` at the top of **app_server.R**.
+The `check_network()` function is part of the `plot_network()` code which was mentioned above. The `simulate_flow()` function is available at <https://github.com/It4innovations/NTS/blob/main/R/simulation.R>. Do not forget to add `@import shinyjs` at the top of **app_server.R**.
 
-```
+```{r, eval=FALSE}
 app_server <- function(input, output, session) {
     # code snippet...
 
@@ -517,7 +543,7 @@ app_server <- function(input, output, session) {
 
 Finally, you have to output the animation. It can be done by following code.
 
-```
+```{r, eval=FALSE}
 app_server <- function(input, output, session) {
     # code snippet...
 
@@ -540,10 +566,25 @@ app_server <- function(input, output, session) {
 }
 ```
 
-In other words, if the **r_simulation$simulation** is ready, prepare the animation **by animate_simulation()**, which can be downloaded here [animate_simulation()](https://github.com/It4innovations/NTS/blob/main/R/animate_simulation.R). If the animation is ready, output it by **plotly** and enable the action button.
+In other words, if the `r_simulation$simulation` is ready, prepare the animation by `animate_simulation()`, which can be downloaded  at <https://github.com/It4innovations/NTS/blob/main/R/animate_simulation.R>. If the animation is ready, output it by **plotly** and enable the action button.
 
-Congratulations, everything is ready to run the app. Type `golem::run_dev()` into the R console and try it yourself. The app should look like as in Fig.5, below.
+Congratulations, everything is ready to run the app. Type `golem::run_dev()` into the R console and try it yourself. The app should look like as in Figure \ref{fig5} and Figure \ref{fig6}, below.
 
+\newpage
+
+\begin{figure}[!ht]
+  \includegraphics{readme_img/shiny_wrong.png}
+  \caption{Wrong input.}
+  \label{fig5}
+\end{figure}
+
+\newpage
+
+\begin{figure}[!ht]
+  \includegraphics{readme_img/shiny_run.png}
+  \caption{Simulation.}
+  \label{fig6}
+\end{figure}
 
 ## Adjustments based on customers review
 
@@ -553,7 +594,7 @@ There was an update from the users that they want to add following features:
 * export the graph into a csv file,
 * add special events that may occur in the simulation (e.g. lunch break).
 
-Such application already exists. You can try it yourself at <https://shiny.vsb.cz/app/nts-shiny>. The source codes are available here [NTS backend](https://github.com/It4innovations/NTS/) and [NTS Shiny](https://github.com/It4innovations/NTS_shiny/). It extends the functionality of the app above. The **bs4dash** features was used to easily style the app.
+Such application already exists. You can try it yourself at <https://shiny.vsb.cz/app/nts-shiny>. The NTS backend source code is available at <https://github.com/It4innovations/NTS/> and NTS Shiny code at <https://github.com/It4innovations/NTS_shiny/>. It extends the functionality of the app above. The **bs4dash** features was used to easily style the app.
 
 \newpage
 
