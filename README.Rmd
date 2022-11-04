@@ -5,6 +5,7 @@ header-includes:
   - \usepackage{pmboxdraw}
   - \usepackage{tcolorbox}
   - \pagestyle{fancy}
+  - \fancyhead[,]{}
   - \fancyfoot[CO,C]{© Copyright 2022 Beneficiaries of the EuroCC/Castiel Project}
   - \fancyfoot[RO]{\thepage}
 output:
