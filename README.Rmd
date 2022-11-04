@@ -25,7 +25,7 @@ output:
   
   \bigskip \bigskip 
 
-  \large{Ing. Ladislav Foltyn}
+  \large{Ladislav Foltyn}
 
   \bigskip \bigskip 
 
