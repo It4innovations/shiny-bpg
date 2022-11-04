@@ -1,14 +1,7 @@
-| ![media/image1.jpeg](media/image1.jpeg)                 |
-|---------------------------------------------------------|
-| <h1> Developing Shiny application <h1/>                 |
-| <h3> Ing. Ladislav Foltyn <h3/>                         |
-| <h2> Best Practise Guide </h2>                          |
-| <h3> October 2022 </h3>                                 |
-|![media/image2.png](media/image2.png)![media/image3.png](media/image3.png)|
-| ![media/image4.png](media/image4.png)                   |
-
-
-
+# Developing Shiny application
+### Ladislav Foltyn
+## Best Practise Guide
+### October 2022
 
 ## Introduction
 
